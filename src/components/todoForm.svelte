@@ -12,7 +12,7 @@
 
   const handleClickSend = () => {
     let isError: boolean = false;
-    if (title == undefined) {
+    if (title == undefined || title == '') {
       isError = true;
       let error_title = document.getElementById('error-title');
       if (error_title) {
@@ -26,7 +26,7 @@
       }
     }
 
-    if (description == undefined) {
+    if (description == undefined || description == '') {
       isError = true;
       let error_description = document.getElementById('error-description');
       if (error_description) {
@@ -47,6 +47,8 @@
         priority: currentPriority == 0 ? 1 : currentPriority,
       };
 
+      console.log(todo);
+
       if (priorityActive != undefined) {
         let priorityActiveElement = document.getElementById(priorityActive);
 
@@ -63,6 +65,9 @@
           // Optional chaining
           todo_form.reset();
         }
+
+        title = '';
+        description = '';
 
         priorityActive = undefined;
       }
